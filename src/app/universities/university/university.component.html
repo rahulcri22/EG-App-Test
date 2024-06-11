@@ -1,0 +1,20 @@
+@if(universities.length) {
+  <div class="container">
+      <p-dropdown 
+        [options]="universities" 
+        [(ngModel)]="selectedUniversity"
+        (onChange)="onUniversitySelect()"
+        optionLabel="name"
+        placeholder="Select a University">
+      </p-dropdown>
+
+      <h2>University Details</h2>
+      <p><strong>Name:</strong> {{ universities[currentIndex].name }}</p>
+      <p><strong>State:</strong> {{ universities[currentIndex].state }}</p>
+      <p><strong>Country:</strong> {{ universities[currentIndex].country }}</p>
+      <p><strong>Alpha Code:</strong> {{ universities[currentIndex].alphaCode }}</p>
+      <p><strong>Website: </strong> <a href={{universities[currentIndex].website}} target="_blank">{{ universities[currentIndex].website }}</a></p>
+      <button type="button" class="btn btn-primary" [disabled]="currentIndex == 0" (click)="prevUniversity()">Previous</button>&nbsp;&nbsp;
+      <button type="button" class="btn btn-primary" [disabled]="currentIndex == universities.length-1" (click)="nextUniversity()">Next</button>
+  </div>
+}

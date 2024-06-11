@@ -1,0 +1,60 @@
+<h2 style="margin-left: 115px">Product Card</h2>
+<div class="container">
+  <div class="row">
+    @for (product of products; track $index) {
+    <div class="col-md-4">
+      <app-product-card
+        [price]="product.price"
+        [name]="product.name"
+        [description]="product.description"
+      >
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="viewDetails(product)"
+        >
+          View Details
+        </button>
+        <div
+          class="modal fade"
+          #productDetailsModal
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="productDetailsModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="productDetailsModalLabel">
+                  Product Details
+                </h5>
+              </div>
+              <div class="modal-body">
+                <p><strong>Name: </strong>{{ productDetails.name }}</p>
+                <p>
+                  <strong>Description: </strong>{{ productDetails.description }}
+                </p>
+                <p>
+                  <strong>Price: </strong
+                  >{{ productDetails.price | currency : "EUR" }}
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                  (click)="closeModal()"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </app-product-card>
+    </div>
+    }
+  </div>
+</div>

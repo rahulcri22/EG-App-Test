@@ -1,0 +1,7 @@
+<div class="container">
+  <p><strong>Name:</strong> {{ name }}</p>
+  <p><strong>Description:</strong> {{ description }}</p>
+  <p><strong>Price:</strong> {{ price | currency : "EUR" }}</p>
+  <ng-content></ng-content>
+</div>
+<hr />
