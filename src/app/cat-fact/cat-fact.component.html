@@ -1,8 +1,8 @@
 @if(catFact.length) {
     <div class="cat-fact-container">
         <h2>Cat Fact</h2>
-        <p> <strong>{{ catFact.fact }}</strong></p>
-        <button type="button" class="btn btn-primary" (click)="getCatFact()">Refresh
-        </button>
+        <p *ngIf="!isLoading"> <strong>{{ catFact.fact }}</strong></p>
+        <div *ngIf="isLoading" class="loader"></div>
+        <button type="button" class="btn btn-primary" (click)="getCatFact()">Refresh</button>
     </div>
 }

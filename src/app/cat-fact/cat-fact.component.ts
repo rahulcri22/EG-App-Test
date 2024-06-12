@@ -13,6 +13,7 @@ import { CatFact } from '../interfaces/data';
 export class CatFactComponent {
   
   catFact: any = {};
+  isLoading: boolean = true;
   private catFactService = inject(CatFactService);
 
   ngOnInit(): void {
@@ -20,13 +21,16 @@ export class CatFactComponent {
   }
 
   getCatFact() {
+    this.isLoading = true;
     this.catFactService.getCatFact().subscribe({
       next: (response: CatFact[]) => {
         this.catFact = response;
+        this.isLoading = false;
       },
       error: (error: Error) => {
         console.error('Cat Fact Error', error);
         alert(error.message);
+        this.isLoading = false;
       },
     });
   }
