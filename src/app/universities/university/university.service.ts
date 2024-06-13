@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Urls } from '../../core/utils/urls';
 
@@ -8,7 +8,7 @@ import { Urls } from '../../core/utils/urls';
 })
 export class UniversityService {
 
-  constructor(private http: HttpClient) { }
+  private http = inject(HttpClient);
 
   getUniversities(): Observable<any> {
     return this.http.get(Urls.getUniversities);
